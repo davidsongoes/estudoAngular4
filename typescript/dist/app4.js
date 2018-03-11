@@ -32,5 +32,5 @@ var dao10 = new Dao_1.Dao();
 dao6.atualizar(concessionaria);
 dao7.inserir(pessoa);
 dao8.atualizar(carro);
-dao9.inserir(moto);
+dao9.remover(5);
 dao10.atualizar(veiculo);

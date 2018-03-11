@@ -3,7 +3,7 @@ import Veiculo from './Veiculo'
 
 export class VeiculoDao implements DaoInterface{
 
-    nomeTabela: string = 'tb_moto'
+    nomeTabela: string = 'tb_veiculo'
 
     inserir(object: Veiculo): boolean {
         console.log('lógica de Insert')

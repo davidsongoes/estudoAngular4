@@ -10,6 +10,9 @@ import Carro from './Carro'
 import { MotoDao } from './MotoDao'
 import Moto from './Moto'
 
+import { VeiculoDao } from './VeiculoDao'
+import Veiculo from './Veiculo'
+
 let dao: ConcessionariaDao = new ConcessionariaDao
 let concessionaria = new Concessionaria('',[])
 
@@ -29,3 +32,8 @@ let dao4: MotoDao = new MotoDao()
 let moto: Moto = new Moto()
 
 dao4.atualizar(moto)
+
+let dao5: VeiculoDao = new VeiculoDao()
+let veiculo: Veiculo = new Veiculo()
+
+dao5.inserir(veiculo)

@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Veiculo_1 = __importDefault(require("./Veiculo"));
 var VeiculoDao = /** @class */ (function () {
     function VeiculoDao() {
-        this.nomeTabela = 'tb_moto';
+        this.nomeTabela = 'tb_veiculo';
     }
     VeiculoDao.prototype.inserir = function (object) {
         console.log('lógica de Insert');

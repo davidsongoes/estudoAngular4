@@ -25,7 +25,7 @@ export class MotoDao implements DaoInterface{
         return new Moto()
     }
 
-    selecionarTodos(): [any]{
+    selecionarTodos(): [Moto]{
         console.log('lógica getAll')
         return [new Moto()]
     }

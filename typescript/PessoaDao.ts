@@ -25,7 +25,7 @@ export class PessoaDao implements DaoInterface{
         return new Pessoa('','')
     }
 
-    selecionarTodos(): [any]{
+    selecionarTodos(): [Pessoa]{
         console.log('lógica getAll')
         return [new Pessoa('','')]
     }

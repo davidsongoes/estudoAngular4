@@ -25,7 +25,7 @@ export class VeiculoDao implements DaoInterface{
         return new Veiculo()
     }
 
-    selecionarTodos(): [any]{
+    selecionarTodos(): [Veiculo]{
         console.log('lógica getAll')
         return [new Veiculo()]
     }

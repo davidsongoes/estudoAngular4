@@ -25,7 +25,7 @@ export class CarroDao implements DaoInterface{
         return new Carro('',0)
     }
 
-    selecionarTodos(): [any]{
+    selecionarTodos(): [Carro]{
         console.log('lógica getAll')
         return [new Carro('',0)]
     }

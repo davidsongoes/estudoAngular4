@@ -9,7 +9,7 @@ var ConcessionariaDao = /** @class */ (function () {
         this.nomeTabela = 'tb_concessionaria';
     }
     ConcessionariaDao.prototype.inserir = function (object) {
-        console.log('lógica de Insert');
+        console.log('lógica de insert');
         return true;
     };
     ConcessionariaDao.prototype.atualizar = function (object) {
@@ -30,3 +30,4 @@ var ConcessionariaDao = /** @class */ (function () {
     };
     return ConcessionariaDao;
 }());
+exports.ConcessionariaDao = ConcessionariaDao;

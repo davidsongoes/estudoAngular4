@@ -6,7 +6,7 @@ export class ConcessionariaDao implements DaoInterface{
     nomeTabela: string = 'tb_concessionaria'
 
     inserir(object: Concessionaria): boolean {
-        console.log('lógica de Insert')
+        console.log('lógica de insert')
         return true
     }
 

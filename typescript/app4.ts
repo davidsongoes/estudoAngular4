@@ -1,39 +1,46 @@
-import {ConcessionariaDao} from './ConcessionariaDao'
+// import {ConcessionariaDao} from './ConcessionariaDao'
 import Concessionaria from './Concessionaria'
 
-import { PessoaDao } from './PessoaDao';
+// import { PessoaDao } from './PessoaDao';
 import Pessoa from './Pessoa'
 
-import { CarroDao } from './CarroDao'
+// import { CarroDao } from './CarroDao'
 import Carro from './Carro'
 
-import { MotoDao } from './MotoDao'
+// import { MotoDao } from './MotoDao'
 import Moto from './Moto'
 
-import { VeiculoDao } from './VeiculoDao'
+// import { VeiculoDao } from './VeiculoDao'
 import Veiculo from './Veiculo'
 
-let dao: ConcessionariaDao = new ConcessionariaDao
+// let dao: ConcessionariaDao = new ConcessionariaDao
 let concessionaria = new Concessionaria('',[])
 
-dao.inserir(concessionaria);
 
-let dao2: PessoaDao = new PessoaDao()
+// let dao2: PessoaDao = new PessoaDao()
 let pessoa: Pessoa = new Pessoa('','')
 
-dao2.atualizar(pessoa)
 
-let dao3: CarroDao = new CarroDao()
+// let dao3: CarroDao = new CarroDao()
 let carro: Carro = new Carro('',0)
 
-dao3.inserir(carro)
 
-let dao4: MotoDao = new MotoDao()
+// let dao4: MotoDao = new MotoDao()
 let moto: Moto = new Moto()
 
-dao4.atualizar(moto)
 
-let dao5: VeiculoDao = new VeiculoDao()
+// let dao5: VeiculoDao = new VeiculoDao()
 let veiculo: Veiculo = new Veiculo()
 
-dao5.inserir(veiculo)
+import {Dao} from './Dao'
+
+let dao6: Dao<Concessionaria> = new Dao<Concessionaria>();
+let dao7: Dao<Pessoa> = new Dao<Pessoa>();
+let dao8: Dao<Carro> = new Dao<Carro>();
+let dao9: Dao<Moto> = new Dao<Moto>();
+let dao10: Dao<Veiculo> = new Dao<Veiculo>();
+dao6.atualizar(concessionaria)
+dao7.inserir(pessoa)
+dao8.atualizar(carro)
+dao9.remover(5)
+dao10 .atualizar(veiculo)

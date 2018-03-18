@@ -27,11 +27,22 @@ export class PainelComponent implements OnInit {
 
   public atualizaResposta(resposta: Event): void{
     this.resposta = ((<HTMLInputElement>resposta.target).value)
-    console.log(this.resposta)
+    // console.log(this.resposta)
   }
 
   public verificarResposta(): void{
-    console.log('Verificar resposta: ', this.resposta)
+
+    if(this.rodadaFrase.frasePtBr == this.resposta){
+      alert( 'A traduação está correta' )
+       // Trocar pergunta da rodada
+       this.rodada++
+
+      //  Atualiza o objeto rodadaFrase
+       this.rodadaFrase = this.frases[this.rodada]
+    } else{
+      alert( 'Atradução está errada' )
+    }
+     
   }
 
 }

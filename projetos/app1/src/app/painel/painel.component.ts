@@ -12,7 +12,7 @@ export class PainelComponent implements OnInit {
 
   public frases: Frase[] = FRASES
   public instrucao: string = 'Traduza a frase:'
-  public resposta: string
+  public resposta: string = ''
 
   public rodada: number = 0
   public rodadaFrase: Frase
@@ -42,10 +42,14 @@ export class PainelComponent implements OnInit {
 
       // Progresso
       this.progresso = this.progresso + (100 / this.frases.length)
-console.log(this.progresso)
+      console.log(this.progresso)
 
       //  Atualiza o objeto rodadaFrase
       this.rodadaFrase = this.frases[this.rodada]
+
+      // Limpar o textarea
+      this.resposta = ''
+
     } else {
       alert('Atradução está errada')
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core'
+import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core'
 
 import { Frase } from '../shared/frase.model'
 import { FRASES } from './frases-mock'
@@ -30,6 +30,10 @@ export class PainelComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    console.log('O componente foi destruído')
+  }
+
   public atualizaResposta(resposta: Event): void {
     this.resposta = ((<HTMLInputElement>resposta.target).value)
     // console.log(this.resposta)
@@ -45,7 +49,7 @@ export class PainelComponent implements OnInit {
       this.progresso = this.progresso + (100 / this.frases.length)
 
       //
-      if(this.rodada === 4){
+      if (this.rodada === 4) {
         this.encerrarJogo.emit('vitoria')
       }
 

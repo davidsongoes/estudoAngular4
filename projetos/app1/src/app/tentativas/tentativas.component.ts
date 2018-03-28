@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, OnChanges } from '@angular/core'
 
 import { Coracao } from '../shared/coracao.model'
 
@@ -7,7 +7,7 @@ import { Coracao } from '../shared/coracao.model'
   templateUrl: './tentativas.component.html',
   styleUrls: ['./tentativas.component.css']
 })
-export class TentativasComponent implements OnInit {
+export class TentativasComponent implements OnInit, OnChanges {
 
   @Input() public tentativas: number
 
@@ -19,8 +19,12 @@ public coracoes: Coracao[] = [
     console.log(this.coracoes)
    }
 
+   ngOnChanges(){
+    console.log('Tentativas restantes do painel: ', this.tentativas)
+  }
+
   ngOnInit() {
-    console.log('Tentativas recebidas do painel: ', this.tentativas)
+    
   }
 
 }

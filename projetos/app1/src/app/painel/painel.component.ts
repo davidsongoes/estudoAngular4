@@ -31,12 +31,10 @@ export class PainelComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('O componente foi destruído')
   }
 
   public atualizaResposta(resposta: Event): void {
     this.resposta = ((<HTMLInputElement>resposta.target).value)
-    // console.log(this.resposta)
   }
 
   public verificarResposta(): void {

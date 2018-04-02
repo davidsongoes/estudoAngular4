@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopoComponent
+    TopoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule

@@ -52,7 +52,14 @@ export class OfertasService{
             ]
         }
     ]
-    public getOfertas(): Array<Oferta>{
+    public getOfertas(): Array<Oferta> {
         return this.ofertas
+    }
+
+    public getOfertas2():Promise<Array<Oferta>>{
+        return new Promise((resolve,reject)=>{
+            // Algum tipo de processamento
+            resolve(this.ofertas)
+        })
     }
 }

@@ -1,6 +1,6 @@
 import { Oferta } from './shared/oferta.model'
 
-export class OfertasService{
+export class OfertasService {
 
     public ofertas: Array<Oferta> = [
         {
@@ -12,10 +12,10 @@ export class OfertasService{
             valor: 29.90,
             destaque: true,
             imagens: [
-                {url: "/assets/ofertas/1/img1.jpg"},
-                {url: "/assets/ofertas/1/img2.jpg"},
-                {url: "/assets/ofertas/1/img3.jpg"},
-                {url: "/assets/ofertas/1/img4.jpg"}
+                { url: "/assets/ofertas/1/img1.jpg" },
+                { url: "/assets/ofertas/1/img2.jpg" },
+                { url: "/assets/ofertas/1/img3.jpg" },
+                { url: "/assets/ofertas/1/img4.jpg" }
             ]
         },
         {
@@ -27,12 +27,12 @@ export class OfertasService{
             valor: 32.90,
             destaque: true,
             imagens: [
-                {url: "/assets/ofertas/2/img1.jpg"},
-                {url: "/assets/ofertas/2/img2.jpg"},
-                {url: "/assets/ofertas/2/img3.jpg"},
-                {url: "/assets/ofertas/2/img4.jpg"}
+                { url: "/assets/ofertas/2/img1.jpg" },
+                { url: "/assets/ofertas/2/img2.jpg" },
+                { url: "/assets/ofertas/2/img3.jpg" },
+                { url: "/assets/ofertas/2/img4.jpg" }
             ]
-        
+
         },
         {
             id: 4,
@@ -43,12 +43,12 @@ export class OfertasService{
             valor: 31.90,
             destaque: true,
             imagens: [
-                {url: "/assets/ofertas/3/img1.jpg"},
-                {url: "/assets/ofertas/3/img2.jpg"},
-                {url: "/assets/ofertas/3/img3.jpg"},
-                {url: "/assets/ofertas/3/img4.jpg"},
-                {url: "/assets/ofertas/3/img5.jpg"},
-                {url: "/assets/ofertas/3/img6.jpg"}
+                { url: "/assets/ofertas/3/img1.jpg" },
+                { url: "/assets/ofertas/3/img2.jpg" },
+                { url: "/assets/ofertas/3/img3.jpg" },
+                { url: "/assets/ofertas/3/img4.jpg" },
+                { url: "/assets/ofertas/3/img5.jpg" },
+                { url: "/assets/ofertas/3/img6.jpg" }
             ]
         }
     ]
@@ -56,10 +56,15 @@ export class OfertasService{
         return this.ofertas
     }
 
-    public getOfertas2():Promise<Array<Oferta>>{
-        return new Promise((resolve,reject)=>{
+    public getOfertas2(): Promise<Array<Oferta>> {
+        return new Promise((resolve, reject) => {
             // Algum tipo de processamento
-            resolve(this.ofertas)
+            let deuCerto = false
+            if (deuCerto) {
+                resolve(this.ofertas)
+            } else {
+                reject({ codigo_erro: 404, mensagem_erro: 'Servidor não encontrado' })
+            }
         })
     }
 }

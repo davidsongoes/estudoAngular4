@@ -14,14 +14,13 @@ export class HomeComponent implements OnInit {
 
   public ofertas: Array<Oferta>
 
-  constructor(private ofertasServices:OfertasService) { }
+  constructor(private ofertasServices: OfertasService) { }
 
   ngOnInit() {
-    // this.ofertas = this.ofertasServices.getOfertas2()
-
     this.ofertasServices.getOfertas2()
-    .then((ofertas: Array<Oferta>) => {
-      this.ofertas = ofertas
-    })
+      .then(
+        (ofertas: Array<Oferta>) => {this.ofertas = ofertas },
+        (param: any) => {console.log(param)}
+      )
   }
 }

@@ -60,6 +60,7 @@ export class OfertasService {
         return new Promise((resolve, reject) => {
             // Algum tipo de processamento
             let deuCerto = true
+            
             if (deuCerto) {
                 setTimeout(() => resolve(this.ofertas), 3000)
             } else {

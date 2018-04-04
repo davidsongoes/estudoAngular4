@@ -59,9 +59,9 @@ export class OfertasService {
     public getOfertas2(): Promise<Array<Oferta>> {
         return new Promise((resolve, reject) => {
             // Algum tipo de processamento
-            let deuCerto = false
+            let deuCerto = true
             if (deuCerto) {
-                resolve(this.ofertas)
+                setTimeout(() => resolve(this.ofertas), 3000)
             } else {
                 reject({ codigo_erro: 404, mensagem_erro: 'Servidor não encontrado' })
             }

@@ -5,17 +5,24 @@ import { OfertasService } from '../../ofertas.service'
 @Component({
   selector: 'app-onde-fica',
   templateUrl: './onde-fica.component.html',
-  styleUrls: ['./onde-fica.component.css']
+  styleUrls: ['./onde-fica.component.css'],
+  providers: [OfertasService]
 })
 export class OndeFicaComponent implements OnInit {
 
+
+  public ondeFica: string = ''
+
   constructor(
     private route: ActivatedRoute,
-    private service: OfertasService
+    private ofertasService: OfertasService,
   ) { }
 
   ngOnInit() {
-    console.log('ID da rota Pai - Onde fica', this.route.parent.snapshot.params['id'])
+    this.ofertasService.getOndeFicarOfertaPorId(this.route.parent.snapshot.params['id'])
+      .then((response: string) => {
+        this.ondeFica = response
+      })
   }
 
 }

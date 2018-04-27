@@ -37,4 +37,12 @@ export class OfertasService {
             return response.json()[0].descricao
         })
     }
+
+    public getOndeFicarOfertaPorId(id: number): Promise<string>{
+        return this.http.get(`${URL_API}/onde-fica?id=${id}`)
+        .toPromise()
+        .then((response: any) => {
+            return response.json()[0].descricao
+        })
+    }
 }

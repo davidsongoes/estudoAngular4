@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/Rx'
 import { interval } from 'rxjs/observable/interval';
+import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-oferta',
@@ -15,7 +16,10 @@ import { interval } from 'rxjs/observable/interval';
     OfertasService
   ]
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, OnDestroy {
+
+  private tempoObservableSubscription: Subscription
+  private meuObservableTesteSubscription: Subscription
 
   public oferta: Oferta
 
@@ -36,11 +40,11 @@ export class OfertaComponent implements OnInit {
     //   () => console.log('Processamento foi classificado como concluído!')
     //   )
 
-    // let tempo = Observable.interval(2000)
+    let tempo = Observable.interval(2000)
 
-    // tempo.subscribe((intervalo: number) => {
-    //   console.log(intervalo)
-    // })
+    this.tempoObservableSubscription = tempo.subscribe((intervalo: number) => {
+      console.log(intervalo)
+    })
 
     // Observable(Observável)
     let meuObservableTeste = Observable.create((observer: Observer<number>) => {
@@ -50,10 +54,15 @@ export class OfertaComponent implements OnInit {
       observer.error('Algum erro foi encotrado na stream de eventos')
     })
     // Observable(Observador)
-    meuObservableTeste.subscribe(
+    this.meuObservableTesteSubscription = meuObservableTeste.subscribe(
       (response: number) => console.log(response + 10),
       (error: string) => console.log(error) ,
       () => console.log('Stream de eventos foi finalizada')
     )
+  }
+
+  ngOnDestroy() {
+    this.meuObservableTesteSubscription.unsubscribe()
+    this.tempoObservableSubscription.unsubscribe()
   }
 }

@@ -22,21 +22,25 @@ export class TopoComponent implements OnInit {
 
   ngOnInit() {
     this.ofertas = this.subjectPesquisa
-    .debounceTime(1000)
-    .distinctUntilChanged()
-    .switchMap((termo: string) => {
-      if(termo.trim() === ''){
+      .debounceTime(1000)
+      .distinctUntilChanged()
+      .switchMap((termo: string) => {
+        if (termo.trim() === '') {
+          return Observable.of<Oferta[]>([])
+        }
+        return this.ofertasService.pesquisaOFertas(termo)
+      })
+      .catch((err: any) => {
+        console.log(err)
         return Observable.of<Oferta[]>([])
-      }
-      return this.ofertasService.pesquisaOFertas(termo)
-    })
-    .catch((err: any) => {
-      console.log(err)
-      return Observable.of<Oferta[]>([])
-    })
+      })
   }
 
   public pesquisa(termoDaBusca: string): void {
     this.subjectPesquisa.next(termoDaBusca)
+  }
+
+  public limpaPesquisa(): void {
+    this.subjectPesquisa.next('')
   }
 }

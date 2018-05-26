@@ -22,7 +22,7 @@ export class OrdemCompraComponent implements OnInit {
     console.log(this.endereco)
   }
 
-  public atualizaNumero(numero: number): void{
+  public atualizaNumero(numero: string): void{
     this.numero = numero
     console.log(this.numero)
   }

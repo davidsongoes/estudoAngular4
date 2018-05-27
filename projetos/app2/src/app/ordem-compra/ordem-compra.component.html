@@ -79,7 +79,7 @@
         </div>
 
         <div class="form-group col-md-4">
-          <input type="text" class="form-control {{ complementoValido ? 'is-valid' : 'is-invalid' }}" placeholder="Complemento" autocomplete="off" [value]="complemento" #inputComplemento
+          <input type="text" class="form-control {{ complementoValido ? 'is-valid' : '' }}" placeholder="Complemento" autocomplete="off" [value]="complemento" #inputComplemento
             (input)="atualizaComplemento(inputComplemento.value)">
         </div>
 

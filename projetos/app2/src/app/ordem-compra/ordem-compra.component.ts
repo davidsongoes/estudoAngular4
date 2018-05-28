@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms'
 import { OrdemCompraService } from '../ordem-compra.service'
 import { Pedido } from '../shared/pedido.model'
 
@@ -10,9 +11,15 @@ import { Pedido } from '../shared/pedido.model'
 })
 export class OrdemCompraComponent implements OnInit {
 
+  public formulario: any
+
   constructor(private ordemCompraService: OrdemCompraService) { }
 
   ngOnInit() {
     
+  }
+
+  public confirmarCompra(formulario: NgForm): void{
+    console.log(formulario.value)
   }
 }

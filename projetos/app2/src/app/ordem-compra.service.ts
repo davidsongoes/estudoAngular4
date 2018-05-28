@@ -20,6 +20,6 @@ export class OrdemCompraService{
             JSON.stringify(pedido),
             new RequestOptions({headers: headers})
         )
-        .map((response: Response) => console.log(response.json()) )
+        .map((response: Response) => response.json().id )
     }
 }

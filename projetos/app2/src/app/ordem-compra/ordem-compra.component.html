@@ -1,7 +1,7 @@
 <div class="container">
   <div class="ordem-compra">
     <form novalidate #formulario="ngForm" (ngSubmit)="confirmarCompra()">
-    
+
       <h5>Sua Compra</h5>
       <hr />
 
@@ -11,8 +11,7 @@
         </div>
         <div class="form-group col-sm-6">
           Super Burger
-          <br />
-          Rodízio de Mini-hambúrger com opção de entrada.
+          <br /> Rodízio de Mini-hambúrger com opção de entrada.
         </div>
 
         <div>
@@ -29,15 +28,14 @@
           29.90
         </div>
       </div>
-      
+
       <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
         <div class="form-group col-sm-1">
           <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
         </div>
         <div class="form-group col-sm-6">
           Estância das águas
-          <br />
-          Diversão garantida com piscinas, trilhas e muito mais.
+          <br /> Diversão garantida com piscinas, trilhas e muito mais.
         </div>
 
         <div>
@@ -54,7 +52,7 @@
           31.90
         </div>
       </div>
-      
+
       <div class="form-row">
         <div class="form-group col d-flex justify-content-end">
           <h4>Total do pedido: 61.80</h4>
@@ -71,44 +69,22 @@
       <div class="form-row">
 
         <div class="form-group col-md-6">
-          <input 
-            type="text" 
-            class="form-control" 
-            placeholder="Endereço" 
-            autocomplete="off" 
-            name="endereco"
-            ngModel
-            required
-            minlength="3"
-            maxlength="120"
-          >
-          <small class="form-text text-danger">Endereço inválido</small>
+          <input type="text" class="form-control" placeholder="Endereço" autocomplete="off" name="endereco" ngModel required minlength="3"
+            maxlength="120" #inputEndereco="ngModel">
+          <small class="form-text text-success" *ngIf="inputEndereco.valid && inputEndereco.touched">Campo Válido</small>
+          <small class="form-text text-danger" *ngIf="!inputEndereco.valid && inputEndereco.touched">Campo Inválido</small>
         </div>
 
         <div class="form-group col-md-2">
-          <input 
-            type="text" 
-            class="form-control" 
-            placeholder="Número" 
-            autocomplete="off" 
-            name="numero"
-            ngModel
-            minlength="1"
-            maxlength="20"
-            required
-          >
-          <small class="form-text text-success">Ok</small>
+          <input type="text" class="form-control" placeholder="Número" autocomplete="off" name="numero" ngModel minlength="1" maxlength="20"
+            required #inputNumero="ngModel">
+          <small class="form-text text-success" *ngIf="inputNumero.valid && inputNumero.touched">Campo Válido</small>
+          <small class="form-text text-danger" *ngIf="!inputNumero.valid && inputNumero.touched">Campo Inválido</small>
         </div>
 
         <div class="form-group col-md-4">
-          <input 
-            type="text" 
-            class="form-control" 
-            placeholder="Complemento" 
-            autocomplete="off"
-            name="complemento"
-            ngModel
-          >
+          <input type="text" class="form-control" placeholder="Complemento" autocomplete="off" name="complemento" ngModel #inputComplemento="ngModel">
+          <small class="form-text text-success" *ngIf="inputComplemento.valid && inputComplemento.touched">Campo Válido</small>
         </div>
 
       </div>
@@ -118,27 +94,20 @@
       <hr />
 
       <div class="form-row">
-          
+
         <div class="form-group col-md-3">
-          <select 
-            class="form-control"
-            name="formaPagamento"
-            ngModel
-            required
-          >
+          <select class="form-control" name="formaPagamento" ngModel required #selectFormaPagamento="ngModel">
             <option value="">Selecione uma opção</option>
             <option value="dinheiro">Dinheiro</option>
             <option value="debito">Débito</option>
           </select>
-          <small class="form-text text-danger">Forma de pagamento inválida</small>
+          <small class="form-text text-success" *ngIf="selectFormaPagamento.valid && selectFormaPagamento.touched">Campo Válido</small>
+          <small class="form-text text-danger" *ngIf="!selectFormaPagamento.valid && selectFormaPagamento.touched">Campo Inválido</small>
         </div>
       </div>
 
       <hr />
-      <button 
-        type="submit" 
-        class="btn btn-primary btn-lg"
-      >Cofirmar compra</button>
+      <button type="submit" class="btn btn-primary btn-lg">Cofirmar compra</button>
     </form>
   </div>
 </div>

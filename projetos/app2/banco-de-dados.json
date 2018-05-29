@@ -192,6 +192,13 @@
       "complemento": "1",
       "formaPagamento": "dinheiro",
       "id": 1
+    },
+    {
+      "endereco": "Rua 123",
+      "numero": "123",
+      "complemento": "Complemento",
+      "formaPagamento": "dinheiro",
+      "id": 2
     }
   ]
 }

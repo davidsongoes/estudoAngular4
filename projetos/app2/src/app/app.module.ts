@@ -52,7 +52,7 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    { provide: CarrinhoService, useValue: CarrinhoService },
+    CarrinhoService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]

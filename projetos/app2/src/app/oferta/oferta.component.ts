@@ -8,9 +8,7 @@ import { CarrinhoService } from '../carrinho.service'
   selector: 'app-oferta',
   templateUrl: './oferta.component.html',
   styleUrls: ['./oferta.component.css'],
-  providers: [
-    OfertasService
-  ]
+  providers: [OfertasService]
 })
 export class OfertaComponent implements OnInit, OnDestroy {
 
@@ -35,7 +33,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   }
 
-  public adicionaItemCarrinho(): void{
+  public adicionaItemCarrinho(): void {
     this.carrinhoService.incluirItem(this.oferta)
     console.log(this.carrinhoService.exibirItens())
   }

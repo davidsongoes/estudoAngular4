@@ -34,6 +34,14 @@ class CarrinhoService {
         })
         return total
     }
+
+    public adicionaQuantidade(itemCarrinho: ItemCarrinho): void {
+        // incrementar a quantidade
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        if(itemCarrinhoEncontrado){
+            itemCarrinhoEncontrado.quantidade += 1
+        }
+    }
 }
 
 export { CarrinhoService }

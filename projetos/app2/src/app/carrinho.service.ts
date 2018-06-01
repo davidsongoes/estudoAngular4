@@ -35,11 +35,19 @@ class CarrinhoService {
         return total
     }
 
-    public adicionaQuantidade(itemCarrinho: ItemCarrinho): void {
+    public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
         // incrementar a quantidade
         let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
         if(itemCarrinhoEncontrado){
             itemCarrinhoEncontrado.quantidade += 1
+        }
+    }
+
+    public removerQuantidade(itemCarrinho: ItemCarrinho): void {
+        // decrementar a quantidade
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        if(itemCarrinhoEncontrado){
+            itemCarrinhoEncontrado.quantidade -= 1
         }
     }
 }

@@ -26,8 +26,8 @@ class CarrinhoService {
         }
     }
 
-    public totalCarrinhoCompras(): number{
-        
+    public totalCarrinhoCompras(): number {
+
         let total: number = 0
         this.itens.map((item: ItemCarrinho) => {
             total = total + (item.valor * item.quantidade)
@@ -38,7 +38,7 @@ class CarrinhoService {
     public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
         // incrementar a quantidade
         let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
-        if(itemCarrinhoEncontrado){
+        if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade += 1
         }
     }
@@ -46,8 +46,11 @@ class CarrinhoService {
     public removerQuantidade(itemCarrinho: ItemCarrinho): void {
         // decrementar a quantidade
         let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
-        if(itemCarrinhoEncontrado){
+        if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade -= 1
+            if (itemCarrinhoEncontrado.quantidade === 0) {
+                this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1)
+            }
         }
     }
 }

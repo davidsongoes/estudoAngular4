@@ -26,11 +26,7 @@ export class BannerComponent implements OnInit {
   }
 
   public toggleEstado(): void {
-    if(this.estado === 'visivel'){
-      this.estado = 'escondido'
-    }else if(this.estado === 'escondido'){
-      this.estado = 'visivel'
-    }
+   this.estado = this.estado === 'visivel' ? 'escondido' : 'visivel'
   }
 
 }

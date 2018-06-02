@@ -25,4 +25,12 @@ export class BannerComponent implements OnInit {
   ngOnInit() {
   }
 
+  public toggleEstado(): void {
+    if(this.estado === 'visivel'){
+      this.estado = 'escondido'
+    }else if(this.estado === 'escondido'){
+      this.estado = 'visivel'
+    }
+  }
+
 }

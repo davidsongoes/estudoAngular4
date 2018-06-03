@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-acesso',
@@ -27,7 +27,15 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
           opacity: 0,
           transform: 'translate(30px, 0)'
         }),
-        animate('500ms 0s ease-in-out')
+        animate('500ms 0s ease-in-out', keyframes([
+          style({offset: 0.45, opacity:1, transform: 'translateX(0)'}),
+          style({offset: 0.80, opacity:1, transform: 'translateX(0)'}),
+          style({offset: 0.84, opacity:1, transform: 'translateY(-10px)'}),
+          style({offset: 0.88, opacity:1, transform: 'translateY(10px)'}),
+          style({offset: 0.92, opacity:1, transform: 'translateY(-10px)'}),
+          style({offset: 0.96, opacity:1, transform: 'translateY(10px)'}),
+          style({offset: 1, opacity:1, transform: 'translateX(0)'})
+        ]))
       ])
     ])
   ]

@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms'
+import {Usuario } from '../usuario.model'
 
 @Component({
   selector: 'app-cadastro',
@@ -28,6 +29,13 @@ export class CadastroComponent implements OnInit {
   }
 
   public cadastrarUsuario(): void {
-    console.log(this.formulario)
+    let usuario: Usuario = new Usuario(
+      this.formulario.value.email,
+      this.formulario.value.nome_completo,
+      this.formulario.value.nome_usuario,
+      this.formulario.value.senha
+    )
+
+    console.log(usuario)
   }
 }

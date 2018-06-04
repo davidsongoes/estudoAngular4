@@ -1,7 +1,11 @@
 import { Usuario } from "./acesso/usuario.model";
+import * as firebase from 'firebase'
 
 export class AutenticacaoService {
     public cadastrarUsuario(usuario: Usuario): void {
-        console.log('Chegamos ate o serviço ', usuario)
+        firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(usuario.email, usuario.senha)
+            .then((response) => {
+                console.log(response)
+            })
     }
 }

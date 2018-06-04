@@ -9,9 +9,9 @@ import { ConfigFirebase } from './config-firebase.model'
 })
 export class AppComponent implements OnInit {
 
-  public configFirebase: ConfigFirebase = new ConfigFirebase()
-
   title = 'app';
+
+  public configFirebase: ConfigFirebase = new ConfigFirebase()
 
   ngOnInit(): void {
     firebase.initializeApp(this.configFirebase)

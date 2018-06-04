@@ -20,4 +20,12 @@ export class AutenticacaoService {
                 console.log(error)
             })
     }
+
+    public autenticar(email: string, senha: string): void {
+        console.log('Email: ', email)
+        console.log('Senha: ', senha)
+        firebase.auth().signInWithEmailAndPassword(email, senha)
+        .then((response) => console.log(response))
+        .catch((error: Error) => console.log(error))
+    }
 }

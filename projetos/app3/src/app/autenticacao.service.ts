@@ -7,5 +7,8 @@ export class AutenticacaoService {
             .then((response) => {
                 console.log(response)
             })
+            .catch((error: Error) => {
+                console.log(error)
+            })
     }
 }

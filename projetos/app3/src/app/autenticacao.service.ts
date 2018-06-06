@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { Usuario } from "./acesso/usuario.model";
 import * as firebase from 'firebase'
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AutenticacaoService {
 
     public token_id: string
+    public error: Error
 
     constructor(private router: Router) { }
 
@@ -39,12 +41,19 @@ export class AutenticacaoService {
                         this.router.navigate(['/home'])
                     })
             })
-            .catch((error: Error) => console.log(error))
+            .catch((error: Error) => {
+                if(error){
+                    this.error = error
+                }
+            })
     }
 
     public autenticado(): boolean {
         if (this.token_id === undefined && localStorage.getItem('idToken') != null) {
             this.token_id = localStorage.getItem('idToken')
+        }
+        if (this.token_id === undefined){
+            this.router.navigate(['/'])
         }
         return this.token_id !== undefined
     }
@@ -56,5 +65,13 @@ export class AutenticacaoService {
                 this.token_id = undefined
                 this.router.navigate(['/'])
             })
+    }
+
+    public emitirError(): boolean {
+        if(this.error){
+            return true
+        }else{
+            return false
+        }
     }
 }

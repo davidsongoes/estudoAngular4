@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { AutenticacaoService } from '../../autenticacao.service'
 
 @Component({
@@ -9,11 +9,13 @@ import { AutenticacaoService } from '../../autenticacao.service'
 })
 export class LoginComponent implements OnInit {
 
+
   @Output() public exibirPainel: EventEmitter<string> = new EventEmitter<string>()
+  error: boolean = false
 
   public formulario: FormGroup = new FormGroup({
-    'email': new FormControl(null),
-    'senha': new FormControl(null)
+    'email': new FormControl(null, [Validators.required]),
+    'senha': new FormControl(null, [Validators.required])
   })
 
   constructor(private autenticacaoService: AutenticacaoService) { }
@@ -21,14 +23,19 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChange() {
+    
+  }
+
   public exibirPainelCadastro(): void {
     this.exibirPainel.emit('cadastro')
   }
 
-  public autenticar(): void {
+  public autenticar(): void  {
     this.autenticacaoService.autenticar(
       this.formulario.value.email,
       this.formulario.value.senha
     )
+    this.error = this.autenticacaoService.emitirError()
   }
 }

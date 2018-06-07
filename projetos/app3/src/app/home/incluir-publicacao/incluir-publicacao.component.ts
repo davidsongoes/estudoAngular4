@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms'
-import { BdService } from '../../bd.service'
-import * as firebase from 'firebase'
+import { FormGroup, FormControl} from '@angular/forms';
+import { BdService } from '../../bd.service';
+import { ProgressoService } from '../../progresso.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-incluir-publicacao',
@@ -17,12 +18,16 @@ export class IncluirPublicacaoComponent implements OnInit {
     'titulo': new FormControl(null)
   })
 
-  constructor(private bdService: BdService) { }
+  constructor(
+    private bdService: BdService,
+    private progressoService: ProgressoService
+  ) { }
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
       this.email = user.email
     })
+
   }
 
   public publicar(): void {
@@ -31,6 +36,8 @@ export class IncluirPublicacaoComponent implements OnInit {
       titulo: this.formulario.value.titulo,
       imagem: this.imagem
     })
+    console.log(this.progressoService.status)
+    console.log(this.progressoService.status)
   }
 
   public preparaImagemUpload(event: Event): void {

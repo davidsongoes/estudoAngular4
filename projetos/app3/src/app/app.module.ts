@@ -12,6 +12,7 @@ import { BannerComponent } from './acesso/banner/banner.component';
 import { LoginComponent } from './acesso/login/login.component';
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 
+import { ProgressoService } from './progresso.service'
 import { AutenticacaoService } from './autenticacao.service';
 import { AutenticacaoGuardService } from './autenticacao-guard.service'
 import { BdService } from './bd.service'

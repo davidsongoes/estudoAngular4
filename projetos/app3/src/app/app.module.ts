@@ -14,9 +14,11 @@ import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 
 import { AutenticacaoService } from './autenticacao.service';
 import { AutenticacaoGuardService } from './autenticacao-guard.service'
+import { BdService } from './bd.service'
 import { HomeComponent } from './home/home.component';
 import { PublicacoesComponent } from './home/publicacoes/publicacoes.component';
 import { IncluirPublicacaoComponent } from './home/incluir-publicacao/incluir-publicacao.component'
+import { importType } from '@angular/compiler/src/output/output_ast';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { IncluirPublicacaoComponent } from './home/incluir-publicacao/incluir-pu
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AutenticacaoService, AutenticacaoGuardService],
+  providers: [AutenticacaoService, AutenticacaoGuardService, BdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

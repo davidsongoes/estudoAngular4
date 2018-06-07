@@ -9,7 +9,6 @@ export class BdService {
         firebase.storage().ref()
         .child(`imagens/${nomeImagem}`)
         .put(publicacao.imagem)
-
         // firebase.database().ref(`publicacao/${btoa(publicacao.email)}`)
         // .push( { titulo: publicacao.titulo} )
         // console.log(publicacao)

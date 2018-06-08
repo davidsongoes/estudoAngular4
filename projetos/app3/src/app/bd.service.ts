@@ -35,4 +35,12 @@ export class BdService {
                 )
             })
     }
+
+    public consultaPublicacaoes(email: string): any {
+        firebase.database().ref(`publicacoes/${btoa(email)}`)
+        .once('value')
+        .then((snapshot: any) => {
+            console.log(snapshot.val())
+        })
+    }
 }

@@ -14,33 +14,46 @@ export class BdService {
             .then((response) => {
                 let nomeImagem = response.key
                 firebase.storage().ref()
-                .child(`imagens/${nomeImagem}`)
-                .put(publicacao.imagem)
-                .on(firebase.storage.TaskEvent.STATE_CHANGED,
-                    // Ação para o acompanhamento
-                    (snapshot: any) => {
-                        this.progressoService.status = 'andamento'
-                        this.progressoService.estado = snapshot
-                        // console.log('Snapshot capturado no on(): ', snapshot)
-                    },
-                    (error) => {
-                        this.progressoService.status = 'erro'
-                        // console.log(error)
-                    },
-                    () => {
-                        // finalização do upload
-                        this.progressoService.status = 'concluido'
-                        // console.log('Upload completado')
-                    }
-                )
+                    .child(`imagens/${nomeImagem}`)
+                    .put(publicacao.imagem)
+                    .on(firebase.storage.TaskEvent.STATE_CHANGED,
+                        // Ação para o acompanhamento
+                        (snapshot: any) => {
+                            this.progressoService.status = 'andamento'
+                            this.progressoService.estado = snapshot
+                            // console.log('Snapshot capturado no on(): ', snapshot)
+                        },
+                        (error) => {
+                            this.progressoService.status = 'erro'
+                            // console.log(error)
+                        },
+                        () => {
+                            // finalização do upload
+                            this.progressoService.status = 'concluido'
+                            // console.log('Upload completado')
+                        }
+                    )
             })
     }
 
     public consultaPublicacaoes(email: string): any {
+        // consultar as publicações (database)
         firebase.database().ref(`publicacoes/${btoa(email)}`)
-        .once('value')
-        .then((snapshot: any) => {
-            console.log(snapshot.val())
-        })
+            .once('value')
+            .then((snapshot: any) => {
+                let publicacoes: Array<any> = []
+                snapshot.forEach((childSnapshot: any) => {
+                    let publicacao: any = childSnapshot.val()
+                    // consultar a url da imagem (storage)
+                    firebase.storage().ref()
+                        .child(`imagens/${childSnapshot.key}`)
+                        .getDownloadURL()
+                        .then((url: string) => {
+                            publicacao.url_imagem = url
+                            publicacoes.push(publicacao)
+                        })
+                })
+                console.log(publicacoes)
+            })
     }
 }

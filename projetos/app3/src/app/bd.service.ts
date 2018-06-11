@@ -50,7 +50,13 @@ export class BdService {
                         .getDownloadURL()
                         .then((url: string) => {
                             publicacao.url_imagem = url
-                            publicacoes.push(publicacao)
+                            // consultar o nome do usuário
+                            firebase.database().ref(`usuario_detalhe/${btoa(email)}`)
+                                .once('value')
+                                .then((snapshot: any) => {
+                                    publicacao.nome_usuario = snapshot.val().nome_usuario
+                                    publicacoes.push(publicacao)
+                                })
                         })
                 })
                 console.log(publicacoes)

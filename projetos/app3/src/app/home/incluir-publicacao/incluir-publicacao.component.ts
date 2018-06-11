@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { BdService } from '../../bd.service';
 import { ProgressoService } from '../../progresso.service';
@@ -13,6 +13,7 @@ import { takeUntil } from 'rxjs/operators'
 })
 export class IncluirPublicacaoComponent implements OnInit {
 
+ @Output() public atualizarTimeLine: EventEmitter<any> = new EventEmitter<any>()
   public email: string
   private imagem: any
 
@@ -52,8 +53,11 @@ export class IncluirPublicacaoComponent implements OnInit {
         this.progressoPublicacao = 'andamento'
         this.porcentagemUpload = Math.round((this.progressoService.estado.bytesTransferred / this.progressoService.estado.totalBytes) * 100)
         if (this.progressoService.status === 'concluido') {
-          continua.next(false)
           this.progressoPublicacao = 'concluido'
+          // emitir um evento do componente parent (home)
+          this.atualizarTimeLine.emit()
+          continua.next(false)
+          
         }
       })
   }

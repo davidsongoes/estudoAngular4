@@ -36,30 +36,34 @@ export class BdService {
             })
     }
 
-    public consultaPublicacaoes(email: string): any {
-        // consultar as publicações (database)
-        firebase.database().ref(`publicacoes/${btoa(email)}`)
-            .once('value')
-            .then((snapshot: any) => {
-                let publicacoes: Array<any> = []
-                snapshot.forEach((childSnapshot: any) => {
-                    let publicacao: any = childSnapshot.val()
-                    // consultar a url da imagem (storage)
-                    firebase.storage().ref()
-                        .child(`imagens/${childSnapshot.key}`)
-                        .getDownloadURL()
-                        .then((url: string) => {
-                            publicacao.url_imagem = url
-                            // consultar o nome do usuário
-                            firebase.database().ref(`usuario_detalhe/${btoa(email)}`)
-                                .once('value')
-                                .then((snapshot: any) => {
-                                    publicacao.nome_usuario = snapshot.val().nome_usuario
-                                    publicacoes.push(publicacao)
-                                })
-                        })
+    public consultaPublicacaoes(email: string): Promise<any> {
+
+        return new Promise((resolve, reject) => {
+
+            // consultar as publicações (database)
+            firebase.database().ref(`publicacoes/${btoa(email)}`)
+                .once('value')
+                .then((snapshot: any) => {
+                    let publicacoes: Array<any> = []
+                    snapshot.forEach((childSnapshot: any) => {
+                        let publicacao: any = childSnapshot.val()
+                        // consultar a url da imagem (storage)
+                        firebase.storage().ref()
+                            .child(`imagens/${childSnapshot.key}`)
+                            .getDownloadURL()
+                            .then((url: string) => {
+                                publicacao.url_imagem = url
+                                // consultar o nome do usuário
+                                firebase.database().ref(`usuario_detalhe/${btoa(email)}`)
+                                    .once('value')
+                                    .then((snapshot: any) => {
+                                        publicacao.nome_usuario = snapshot.val().nome_usuario
+                                        publicacoes.push(publicacao)
+                                    })
+                            })
+                    })
+                    resolve(publicacoes)
                 })
-                console.log(publicacoes)
-            })
+        })
     }
 }

@@ -47,10 +47,21 @@ export class BdService {
                 .then((snapshot: any) => {
                     let publicacoes: Array<any> = []
                     snapshot.forEach((childSnapshot: any) => {
+
                         let publicacao: any = childSnapshot.val()
+                        publicacao.key = childSnapshot.key
+                        publicacoes.push(publicacao)
+                    })
+                    // console.log('Sequencia resolvida: ', publicacoes)
+
+                    return publicacoes.reverse
+                })
+                .then((publicacoes: any) => {
+
+                    publicacoes.forEach((publicacao) => {
                         // consultar a url da imagem (storage)
                         firebase.storage().ref()
-                            .child(`imagens/${childSnapshot.key}`)
+                            .child(`imagens/${publicacao.key}`)
                             .getDownloadURL()
                             .then((url: string) => {
                                 publicacao.url_imagem = url

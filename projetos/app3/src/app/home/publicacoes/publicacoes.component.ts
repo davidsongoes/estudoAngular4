@@ -27,5 +27,4 @@ export class PublicacoesComponent implements OnInit {
       this.publicacoes = response
     })
   }
-
 }

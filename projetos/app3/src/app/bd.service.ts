@@ -42,6 +42,7 @@ export class BdService {
 
             // consultar as publicações (database)
             firebase.database().ref(`publicacoes/${btoa(email)}`)
+                .orderByKey()
                 .once('value')
                 .then((snapshot: any) => {
                     let publicacoes: Array<any> = []

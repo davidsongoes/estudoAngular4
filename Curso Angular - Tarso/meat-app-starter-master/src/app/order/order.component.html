@@ -4,9 +4,6 @@
 
 <section class="content">
   <section class="invoice">
-
-    {{formulario.valid}} {{formulario.value | json}}
-
     <form #formulario="ngForm" novalidate (submit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">

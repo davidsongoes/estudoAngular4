@@ -5,13 +5,12 @@ import { RestaurantDetailComponent } from "./restaurant-detail/restaurant-detail
 import { MenuComponent } from "./restaurant-detail/menu/menu.component";
 import { ShoppingCartComponent } from "./restaurant-detail/shopping-cart/shopping-cart.component";
 import { ReviewsComponent } from "./restaurant-detail/reviews/reviews.component";
-import { OrderComponent } from "./order/order.component";
 import { OrderSummaryComponent } from "./order-summary/order-summary.component";
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'about', loadChildren: './about/about.module#AboutModule' },
-    { path: 'order', component: OrderComponent},
+    { path: 'order', loadChildren: './order/order.module#OrderModule'},
     { path: 'order-summary', component: OrderSummaryComponent},
     { path: 'restaurants', component: RestaurantsComponent },
     {

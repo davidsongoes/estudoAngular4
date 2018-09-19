@@ -1,6 +1,8 @@
 export interface Restaurant {
 
     id: string
+    about?: string
+    hours?: string
     name: string
     category: string
     deliveryEstimate: string

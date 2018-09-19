@@ -56,6 +56,10 @@ export class OrderComponent implements OnInit {
     return undefined
   }
 
+  onSubmit() {
+    
+  }
+
   itemsValue(): number {
     return this.orderService.itemsValue()
   }
